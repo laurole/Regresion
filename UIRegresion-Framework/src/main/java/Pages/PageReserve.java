@@ -5,10 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class PageReserve {
-
     public WebDriver driver;
     public Helpers helpers;
-
     public  PageReserve(WebDriver driver){
         this.driver=driver;
         helpers = new Helpers(driver);
@@ -23,7 +21,6 @@ public class PageReserve {
     public By prices = By.xpath("//tr[1]/td[1]");
     public By bottomChose  = By.xpath("//input[@value=\"Choose This Flight\"]");
 
-
     //FUNCIONES
     public String getNumberFlight(){
         String numbrFlight = driver.findElement(numFlight).getText();
@@ -34,7 +31,6 @@ public class PageReserve {
         String airLine = driver.findElement(airlines).getText();
         System.out.println(airLine);
         return airLine;
-
     }
     public void getdeparts(){
         String depart = driver.findElement(departs).getText();

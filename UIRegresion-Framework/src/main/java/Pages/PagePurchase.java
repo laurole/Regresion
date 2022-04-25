@@ -1,6 +1,7 @@
 package Pages;
 
 import Helpers.Helpers;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -30,6 +31,7 @@ public class PagePurchase {
     public By creditCardMonth = By.id("creditCardMonth");
     public By creditCardYear = By.id("creditCardYear");
     public By nameOnCard = By.id("nameOnCard");
+    private By rememberMeCheck_checkbox = By.name("rememberMe");
     public By BottomPurchase = By.xpath("//input[@value=\"Purchase Flight\"]");
 
 
@@ -49,7 +51,27 @@ public class PagePurchase {
 
     }
 
-    public void clickPurchase(){
+    public  void fill_form(){
+        Faker faker = new Faker();
+        helpers.SendText(nameuser, faker.name().fullName());
+        helpers.SendText(address, helpers.returnFullAddress());
+        helpers.SendText(city, faker.address().city());
+        helpers.SendText(state, faker.address().state());
+        helpers.SendText(zipCode, faker.address().zipCode());
+        helpers.selectByIndex(TypeCard);
+        helpers.SendText(creditcardNumber, faker.business().creditCardNumber());
+        helpers.SendText(creditCardMonth, String.valueOf(helpers.GetRandomNumber(12)));
+        helpers.SendText(creditCardYear, String.valueOf(helpers.GetRandomNumber(2050)));
+        helpers.SendText(nameOnCard, faker.name().fullName());
+        helpers.SendText(address, helpers.returnFullAddress());
+
+
+    }
+
+    public void click_remember_checkbox(){
+        helpers.clickBy(rememberMeCheck_checkbox);
+    }
+    public void click_purchaseFlight_button(){
         helpers.clickBy(BottomPurchase);
     }
 

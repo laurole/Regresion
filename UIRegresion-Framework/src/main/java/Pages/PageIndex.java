@@ -23,12 +23,12 @@ public class PageIndex {
 
     // Funciones - Funciones
 
-    public  void selectDepartureCity(String city){
-        helpers.SendText(departureCitySelect, city);
+    public String selectDepartureCity(){
+        return helpers.selectByIndex(departureCitySelect);
         //driver.findElement(departureCitySelect).sendKeys("Mexico City");
     }
-    public void selectDestinationCity(String city){
-        helpers.SendText(destinationCitySelect, city);
+    public String selectDestinationCity(){
+        return helpers.selectByIndex(destinationCitySelect);
         //driver.findElement(destinationCitySelect).sendKeys("Berlin");
     }
     public void click_find_flights(){
